@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --primary-color: #fff7f7;
+    --secondary-color: #FFD93D;
+    --accent-color: #70D6FF;
+    --light-color: #F9F9F9;
+    --dark-color: #333333;
+    --success-color: #00c48c;
+    --error-color: #FF3B30;
+}
+
+h1, h2, h3, h4, h5, h6 ,p {
+    font-family: 'Nunito Sans' sans-serif;
+}
+
+p {
+    font-family: 'Baloo 2',;
+    font-size: 18px;
+}

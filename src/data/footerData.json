@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Shop",
+    "links": [
+      { "label": "Clothes", "to": "/shop/clothes" },
+      { "label": "Shoes", "to": "/shop/shoes" },
+      { "label": "Feeding Bottles", "to": "/shop/bottles" },
+      { "label": "Walkers", "to": "/shop/walkers" }
+    ]
+  },
+  {
+    "title": "About",
+    "links": [
+      { "label": "Our Story", "to": "/about" },
+      { "label": "Contact Us", "to": "/contact" },
+      { "label": "FAQs", "to": "/faqs" }
+    ]
+  },
+  {
+    "title": "Policies",
+    "links": [
+      { "label": "Privacy Policy", "to": "/privacy" },
+      { "label": "Terms of Service", "to": "/terms" },
+      { "label": "Refund Policy", "to": "/refund" }
+    ]
+  },
+  {
+    "title": "JochennaThrift",
+    "links": [
+      { "label": "Privacy Policy", "to": "/privacy" },
+      { "label": "Terms of Service", "to": "/terms" },
+      { "label": "Refund Policy", "to": "/refund" }
+    ]
+  }
+  
+]
