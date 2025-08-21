@@ -49,7 +49,7 @@ export default function HeroSection() {
           className="flex-1"
         >
           <img
-            src="https://unsplash.com/photos/2-girls-sitting-on-concrete-floor-puWkYFKJVbA"
+            src="/nathan-dumlao-puWkYFKJVbA-unsplash.jpg"
             alt="Thrift fashion"
             className="w-full rounded-2xl shadow-xl"
           />
