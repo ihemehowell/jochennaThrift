@@ -59,7 +59,7 @@ export default function FeaturedProducts() {
               </button>
 
               {/* Product Info */}
-              <div className="p-3">
+              <div className="p-5">
                 <h3 className="text-sm font-medium line-clamp-1">
                   {product.name}
                 </h3>
