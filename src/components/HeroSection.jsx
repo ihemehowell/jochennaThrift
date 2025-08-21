@@ -51,7 +51,7 @@ export default function HeroSection() {
           <img
             src="/nathan-dumlao-puWkYFKJVbA-unsplash.jpg"
             alt="Thrift fashion"
-            className="w-full h-44 rounded-2xl shadow-xl"
+            className="w-full h-96 rounded-2xl shadow-xl"
           />
         </motion.div>
       </div>
