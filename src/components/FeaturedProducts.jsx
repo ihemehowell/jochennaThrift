@@ -53,7 +53,7 @@ export default function FeaturedProducts() {
               {/* Hover Button */}
               <button
                 onClick={() => addToCart(product)}
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 text-sm bg-black text-white rounded-full opacity-0 group-hover:opacity-100 transition"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 px-4 py-2 text-sm bg-black text-white rounded-full opacity-0 group-hover:opacity-100 transition"
               >
                 Add to Cart
               </button>
