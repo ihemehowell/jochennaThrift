@@ -70,12 +70,6 @@ export default function AdminOrders() {
       <strong>Sizes:</strong>{" "}
       {Array.isArray(item.sizes) ? item.sizes.join(", ") : "N/A"}
     </p>
-    <p><strong>Stock:</strong> {item.stock}</p>
-    <p>
-      <strong>Tags:</strong>{" "}
-      {Array.isArray(item.tags) ? item.tags.join(", ") : "N/A"}
-    </p>
-    <p><strong>Description:</strong> {item.description}</p>
     <img
       src={item.imageUrl}
       alt={item.name}
