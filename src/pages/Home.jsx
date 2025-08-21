@@ -20,3 +20,9 @@ const Home = () => {
     </div>
   )
 }
+
+// Wrap it here instead of inline export
+const HomeWithSpinner = WithSpinner(Home);
+
+export default HomeWithSpinner;
+
