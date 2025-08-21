@@ -46,7 +46,7 @@ export default function FeaturedProducts() {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                  className="w-full h-[200px] object-contain transform group-hover:scale-105 transition duration-500"
                 />
               </div>
 
