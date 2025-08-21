@@ -27,9 +27,9 @@ export default function FeaturedProducts() {
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold relative">
             Popular This Week
-            <span className="absolute -bottom-1 left-0 w-12 h-1 bg-primary rounded"></span>
+            <span className="absolute -bottom-1 left-0 w-12 h-1 bg-purple rounded"></span>
           </h2>
-          <button className="text-sm font-medium text-gray-600 hover:text-primary transition">
+          <button className="text-sm font-medium text-gray-600 hover:text-purple transition">
             View All →
           </button>
         </div>
@@ -46,7 +46,7 @@ export default function FeaturedProducts() {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-full h-[200px] object-contain transform group-hover:scale-105 transition duration-500"
+                  className="w-full h-[200px] object-cover transform group-hover:scale-105 transition duration-500"
                 />
               </div>
 
