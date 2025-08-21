@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <NavLink to="/" className="text-3xl font-semibold">
-          <span className="text-primary">Jochenna</span>Thrift
+          <span className="text-purple-600">Jochenna</span>Thrift
         </NavLink>
 
         {/* Desktop Nav */}
@@ -64,8 +64,8 @@ export default function Navbar() {
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `hover:text-primary transition-colors duration-300 ${
-                    isActive ? "text-primary" : ""
+                  `hover:text-purple-600 transition-colors duration-300 ${
+                    isActive ? "text-purple-600" : ""
                   }`
                 }
               >
@@ -80,9 +80,9 @@ export default function Navbar() {
               <NavLink
                 to="/add-product"
                 className={({ isActive }) =>
-                  `hover:text-primary
+                  `hover:text-purple-600
                  transition-colors duration-300 ${
-                    isActive ? "text-primary" : ""
+                    isActive ? "text-purple-600" : ""
                   }`
                 }
               >
@@ -100,7 +100,7 @@ export default function Navbar() {
                 to="/orders"
                 className={({ isActive }) =>
                   `hover:text-primary transition-colors duration-300 ${
-                    isActive ? "text-primary" : ""
+                    isActive ? "text-purple-600" : ""
                   }`
                 }
               >
@@ -117,7 +117,7 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center gap-2 ">
               <span className="text-sm text-gray-600 hidden sm:block">
-                {<User className="transition-transform duration-200 hover:scale-110 text-primary"/> || user.email}
+                {<User className="transition-transform duration-200 hover:scale-110 text-purple-600"/> || user.email}
               </span>
               <button
                 onClick={handleLogout}
@@ -140,9 +140,9 @@ export default function Navbar() {
             onClick={toggleCart}
             className="relative transition-transform duration-200 hover:scale-110"
           >
-            <ShoppingCart className="w-6 h-6 text-primary" />
+            <ShoppingCart className="w-6 h-6 text-purple-600" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-primary/60 text-white text-xs font-bold rounded-full px-1.5">
+              <span className="absolute -top-2 -right-2 bg-purple-600/60 text-white text-xs font-bold rounded-full px-1.5">
                 {cartCount}
               </span>
             )}
@@ -150,7 +150,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-primary"
+            className="lg:hidden text-purple-600"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -170,8 +170,8 @@ export default function Navbar() {
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `block hover:text-primary transition-colors duration-300 ${
-                    isActive ? "text-primary" : ""
+                  `block hover:text-purple-600 transition-colors duration-300 ${
+                    isActive ? "text-purple-600" : ""
                   }`
                 }
                 onClick={() => setIsOpen(false)}
@@ -187,8 +187,8 @@ export default function Navbar() {
               <NavLink
                 to="/add-product"
                 className={({ isActive }) =>
-                  `block hover:text-green-600 transition-colors duration-300 ${
-                    isActive ? "text-green-600" : ""
+                  `block hover:text-purple-600 transition-colors duration-300 ${
+                    isActive ? "text-purple-600" : ""
                   }`
                 }
                 onClick={() => setIsOpen(false)}
@@ -197,6 +197,23 @@ export default function Navbar() {
               </NavLink>
             </li>
           )}
+
+           {isAdmin && (
+            <li>
+              <NavLink
+                to="/orders"
+                className={({ isActive }) =>
+                  `hover:text-purple-600 transition-colors duration-300 ${
+                    isActive ? "text-purple-600" : ""
+                  }`
+                }
+              >
+                Admin Order
+              </NavLink>
+            </li>
+          )
+
+          }
         </ul>
       </div>
     </nav>
