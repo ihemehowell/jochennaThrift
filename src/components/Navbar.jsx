@@ -129,7 +129,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={handleLogin}
-              className="bg-primary text-white px-3 py-1 rounded-lg text-sm transition-colors duration-300"
+              className="bg-purple text-white px-3 py-1 rounded-lg text-sm transition-colors duration-300"
             >
               Login
             </button>
