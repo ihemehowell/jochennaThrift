@@ -18,7 +18,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="flex-1 text-center md:text-left"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 leading-tight">
             Discover Affordable{" "}
             <span className="text-purple-600">Thrift Fashion</span>
           </h1>
