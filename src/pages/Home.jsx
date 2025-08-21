@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroSection from '../components/HeroSection'
-import FeaturedProducts from '../components/CategoryHighlights'
+import  CategoryHighlights from '../components/CategoryHighlights'
 import FeaturedProducts from '../components/FeaturedProducts'
 import ProductShowcase from '../components/ProductShowcase'
 import PromoBanner from '../components/PromoBanner'
