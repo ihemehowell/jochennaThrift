@@ -1,95 +1,100 @@
-import React, { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const categories = [
-  { name: 'Clothes', image: '/clothes.jpg' },
-  { name: 'Shoes', image: '/shoes.jpg' },
-  { name: 'Feeding Bottles', image: '/bottles.jpg' },
-  { name: 'Walkers', image: '/walker.jpeg' },
-  { name: 'Toys', image: '/toys.jpg' },
-  { name: 'Blankets', image: '/blankets.jpg' },
+const products = [
+  {
+    id: 1,
+    name: "Nike Air Force 1",
+    price: "$85",
+    image: "https://via.placeholder.com/300x400.png?text=Nike+AF1",
+    category: "Sneakers",
+  },
+  {
+    id: 2,
+    name: "Vintage Denim Jacket",
+    price: "$45",
+    image: "https://via.placeholder.com/300x400.png?text=Denim+Jacket",
+    category: "Jackets",
+  },
+  {
+    id: 3,
+    name: "Adidas Hoodie",
+    price: "$60",
+    image: "https://via.placeholder.com/300x400.png?text=Adidas+Hoodie",
+    category: "Hoodies",
+  },
+  {
+    id: 4,
+    name: "Champion Sweatpants",
+    price: "$40",
+    image: "https://via.placeholder.com/300x400.png?text=Champion+Sweats",
+    category: "Pants",
+  },
 ];
 
-const FeaturedProducts = () => {
-  const [autoPlay, setAutoPlay] = useState(true);
+export default function FeaturedProducts() {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -300 : 300,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <section className="py-16 px-6 bg-primarylight">
-      <div className="w-full mx-auto flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
-        <h2
-          className="text-3xl font-baloo text-primary tracking-wide"
-         
-        >
-          Shop by Category
-        </h2>
-        <button
-          onClick={() => setAutoPlay(!autoPlay)}
-          className="text-sm px-4 py-2 border-2 border-primary text-primary rounded-md hover:bg-primarylight transition focus:outline-none focus:ring-2 focus:ring-primary/50"
-          aria-pressed={autoPlay}
-          aria-label={`Toggle auto-scroll, currently ${autoPlay ? 'On' : 'Off'}`}
-        >
-          Auto-Scroll: <span className="font-semibold">{autoPlay ? 'On' : 'Off'}</span>
-        </button>
+    <section className="max-w-7xl mx-auto px-4 py-12">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold">Popular This Week</h2>
+          <p className="text-gray-500">Our most loved thrift picks right now</p>
+        </div>
+
+        {/* Arrows */}
+        <div className="flex space-x-2">
+          <button
+            onClick={() => scroll("left")}
+            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
       </div>
 
-      <div className=" mx-auto relative">
-        <Carousel
-          showThumbs={false}
-          infiniteLoop
-          autoPlay={autoPlay}
-          interval={4000}
-          showStatus={false}
-          showArrows
-          centerMode
-          centerSlidePercentage={33.33}
-          renderArrowPrev={(onClickHandler, hasPrev) =>
-            hasPrev && (
-              <button
-                type="button"
-                onClick={onClickHandler}
-                className="absolute left-[-10px] z-50 top-1/2 -translate-y-1/2 bg-neutral-light border border-primary rounded-full p-2 shadow-md hover:bg-primarylight focus:outline-none focus:ring-2 focus:ring-primary"
-                aria-label="Previous category"
-              >
-                <ChevronLeft className="w-3 h-3 text-primary" />
-              </button>
-            )
-          }
-          renderArrowNext={(onClickHandler, hasNext) =>
-            hasNext && (
-              <button
-                type="button"
-                onClick={onClickHandler}
-                className="absolute right-[-10px] top-1/2 -translate-y-1/2 bg-neutral-light border border-primary rounded-full p-2 shadow-md hover:bg-primarylight focus:outline-none focus:ring-2 focus:ring-primary"
-                aria-label="Next category"
-              >
-                <ChevronRight className="w-3 h-3 text-primary" />
-              </button>
-            )
-          }
-        >
-          {categories.map((cat) => (
-            <div
-              key={cat.name}
-              className="mx-3 bg-neutral-light rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 hover:shadow-xl focus-within:shadow-xl focus-within:outline-none"
-              tabIndex={0}
-            >
+      {/* Product Slider */}
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
+      >
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="min-w-[250px] flex-shrink-0 group cursor-pointer"
+          >
+            <div className="relative w-full h-72 overflow-hidden rounded-xl shadow hover:shadow-lg">
               <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-48 object-cover object-center"
-                loading="lazy"
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <h3 className="text-center text-secondary font-nunito font-semibold py-4 text-lg select-none">
-                {cat.name}
-              </h3>
             </div>
-          ))}
-        </Carousel>
+            <div className="mt-3">
+              <h3 className="text-sm text-gray-500">{product.category}</h3>
+              <p className="font-semibold">{product.name}</p>
+              <p className="text-primary font-bold">{product.price}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default FeaturedProducts;
+}
