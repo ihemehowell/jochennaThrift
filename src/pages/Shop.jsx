@@ -5,15 +5,15 @@ import FilterSidebar from "../components/FilterSidebar";
 import ProductCard from "../components/ProductCard";
 import { Filter, Grid, List } from "lucide-react";
 import MegaNavBar from "../components/MegaNavbar";
-import Spinner from "../components/Spinner"; // Ensure you have a Spinner component
+import withSpinner from "../components/withSpinner"; // 👈 import HOC
 
-export default function Shop() {
+function Shop({}) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [view, setView] = useState("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // ✅ spinner for API
+  const [loading, setLoading] = useState(true);
 
   const [selectedFilters, setSelectedFilters] = useState({
     category: [],
@@ -36,7 +36,6 @@ export default function Shop() {
           id: doc.id,
           ...doc.data(),
         }));
-
         setProducts(productList);
         setFilteredProducts(productList);
       } catch (error) {
@@ -45,7 +44,6 @@ export default function Shop() {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -87,8 +85,6 @@ export default function Shop() {
       };
     });
   };
-
-  if (loading) return <div className="flex justify-center mt-10"><Spinner size={20} border={5} /></div>;
 
   return (
     <div className="flex max-w-[1900px] mx-auto px-4 py-8 gap-8">
@@ -132,6 +128,7 @@ export default function Shop() {
               </button>
               <button
                 className={`px-3 py-2 rounded-lg ${view === "list" ? "bg-primary text-white" : "bg-gray-100"}`}
+                onClick={() => setView("list")}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -156,3 +153,6 @@ export default function Shop() {
     </div>
   );
 }
+
+// ✅ Wrap Shop with withSpinner before export
+export default withSpinner(Shop);
