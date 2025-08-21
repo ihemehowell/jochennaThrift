@@ -20,11 +20,11 @@ export default function ProductCard({ product }) {
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-base font-semibold line-clamp-2">{product.name}</h3>
         <p className="text-lg font-bold text-primary mt-1">₦{product.price}</p>
-        <div className=" z-40  flex space-x-2">
+        <div className="  flex space-x-2">
  
         <span
           key={product.tags}
-          className={` bg-gray-500 inline-flex items-center space-x-1 rounded-full px-3 py-1 text-xs font-semibold shadow-md text-white`}
+          className={` bg-gray-500 inline-flex items-center z-40 space-x-1 rounded-full px-3 py-1 text-xs font-semibold shadow-md text-white`}
         >
           <Tag className="w-3 h-3" />
           <span>{product.tags}</span>
