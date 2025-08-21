@@ -1,42 +1,21 @@
-// src/components/WithSpinner.jsx
 import React, { useState, useEffect } from "react";
-import Spinner from "./Spinner";
 
 const WithSpinner = (WrappedComponent) => {
   return function SpinnerWrapper(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      const images = document.querySelectorAll("img");
-      let loadedCount = 0;
-
-      if (images.length === 0) {
-        setLoading(false);
-        return;
-      }
-
-      const handleLoad = () => {
-        loadedCount += 1;
-        if (loadedCount === images.length) setLoading(false);
-      };
-
-      images.forEach((img) => {
-        if (img.complete) handleLoad();
-        else {
-          img.addEventListener("load", handleLoad);
-          img.addEventListener("error", handleLoad);
-        }
-      });
-
-      return () => {
-        images.forEach((img) => {
-          img.removeEventListener("load", handleLoad);
-          img.removeEventListener("error", handleLoad);
-        });
-      };
+      const timer = setTimeout(() => setLoading(false), 1500);
+      return () => clearTimeout(timer);
     }, []);
 
-    if (loading) return <Spinner size={1} border={5} />;
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        </div>
+      );
+    }
 
     return <WrappedComponent {...props} />;
   };
