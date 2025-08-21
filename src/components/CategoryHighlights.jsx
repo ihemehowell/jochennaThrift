@@ -1,5 +1,5 @@
 import React from "react";
-import { Baby, Shirt, ShoppingBag } from "lucide-react";
+import { Baby, Shirt, ShoppingBag,Footprint } from "lucide-react";
 
 const categories = [
   { id: 1, name: "Boys", icon: <Shirt className="w-8 h-8 text-blue-500" />, bg: "bg-blue-100" },
