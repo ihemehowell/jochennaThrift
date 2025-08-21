@@ -60,35 +60,29 @@ export default function AdminOrders() {
             <div className="mt-4">
               <h4 className="font-semibold mb-2">Items:</h4>
               <ul className="space-y-2">
-                {order.items.map((item) => (
-                  <li key={item.id} className="border p-2 rounded">
-                    <p>
-                      <strong>Name:</strong> {item.name}
-                    </p>
-                    <p>
-                      <strong>Category:</strong> {item.category}
-                    </p>
-                    <p>
-                      <strong>Price:</strong> ₦{item.price}
-                    </p>
-                    <p>
-                      <strong>Quantity:</strong> {item.quantity}
-                    </p>
-                    <p>
-                      <strong>Sizes:</strong> {item.sizes.join(", ")}
-                    </p>
-                    <p>
-                      <strong>Stock:</strong> {item.stock}
-                    </p>
-                    <p>
-                      <strong>Tags:</strong> {item.tags.join(", ")}
-                    </p>
-                    <p>
-                      <strong>Description:</strong> {item.description}
-                    </p>
-                    <img src={item.imageUrl} alt={item.name} className="w-32 h-auto mt-2 rounded" />
-                  </li>
-                ))}
+               {order.items.map((item) => (
+  <li key={item.id} className="border p-2 rounded">
+    <p><strong>Name:</strong> {item.name}</p>
+    <p><strong>Category:</strong> {item.category}</p>
+    <p><strong>Price:</strong> ₦{item.price}</p>
+    <p><strong>Quantity:</strong> {item.quantity}</p>
+    <p>
+      <strong>Sizes:</strong>{" "}
+      {Array.isArray(item.sizes) ? item.sizes.join(", ") : "N/A"}
+    </p>
+    <p><strong>Stock:</strong> {item.stock}</p>
+    <p>
+      <strong>Tags:</strong>{" "}
+      {Array.isArray(item.tags) ? item.tags.join(", ") : "N/A"}
+    </p>
+    <p><strong>Description:</strong> {item.description}</p>
+    <img
+      src={item.imageUrl}
+      alt={item.name}
+      className="w-32 h-auto mt-2 rounded"
+    />
+  </li>
+))}
               </ul>
             </div>
           </li>
