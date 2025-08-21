@@ -5,7 +5,7 @@ import FilterSidebar from "../components/FilterSidebar";
 import ProductCard from "../components/ProductCard";
 import { Filter, Grid, List } from "lucide-react";
 import MegaNavBar from "../components/MegaNavbar";
-import withSpinner from "../components/withSpinner"; // 👈 import HOC
+import WithSpinner from "../components/WithSpinner"; // 👈 import HOC
 
 function Shop({}) {
   const [products, setProducts] = useState([]);
@@ -155,4 +155,4 @@ function Shop({}) {
 }
 
 // ✅ Wrap Shop with withSpinner before export
-export default withSpinner(Shop);
+export default WithSpinner(Shop);
