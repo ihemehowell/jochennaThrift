@@ -128,7 +128,7 @@ function Shop({}) {
               </button>
               <button
                 className={`px-3 py-2 rounded-lg ${view === "list" ? "bg-primary text-white" : "bg-gray-100"}`}
-                onClick={() => setView("list")}
+{/*                 onClick={() => setView("list")} */}
               >
                 <List className="w-4 h-4" />
               </button>
