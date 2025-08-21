@@ -1,47 +1,60 @@
-import React from "react";
-import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
-const HeroSection = () => {
+// src/components/HeroSection.jsx
+import { motion } from "framer-motion";
+import { ShoppingBag } from "lucide-react";
+
+export default function HeroSection() {
   return (
-    <section
-      className="relative w-full h-[80vh] bg-cover bg-center bg-no-repeat"
-      aria-label="Kids fashion collection hero section"
-    >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black to-primary"></div>
+    <section className="relative bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/10"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center items-start px-8 md:px-16 lg:px-24 text-white">
-        <h1 className="text-4xl md:text-6xl font-semibold leading-tight drop-shadow-lg max-w-2xl text-baloo">
-          Discover the Cutest Outfits for Your Little Ones
-        </h1>
-        <p className="mt-4 text-lg md:text-xl max-w-xl font-light drop-shadow-md">
-          Explore our brand new collection with styles perfect for kids of all ages.
-        </p>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24 flex flex-col md:flex-row items-center gap-12">
+        {/* Left content */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 text-center md:text-left"
+        >
+          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            Discover Affordable{" "}
+            <span className="text-purple-600">Thrift Fashion</span>
+          </h1>
+          <p className="mt-6 text-lg text-gray-700 max-w-xl">
+            Shop stylish thrift clothes, shoes, and baby wear at unbeatable
+            prices. Refresh your wardrobe while keeping it budget-friendly and
+            sustainable.
+          </p>
 
-        <div className="mt-8 flex space-x-4">
-          <Link to="/shop">
-          <button
-            type="button"
-            className="inline-flex items-center bg-primary px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary/50 transition"
-            aria-label="Shop Now"
-          >
-            <ShoppingCartIcon className="w-5 h-5 mr-2" />
-            Shop Now
-          </button>
-          </Link>
-          
-          <button
-            type="button"
-            className="inline-flex items-center bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-6 py-3 rounded-lg font-medium focus:outline-none focus:ring-4 focus:ring-white/50 transition"
-            aria-label="Learn More"
-          >
-            Learn More
-          </button>
-        </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <Link to="/shop">
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all">
+              <ShoppingBag size={20} />
+              Shop Now
+            </button>
+            </Link>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 border px-6 py-3 rounded-xl shadow-md transition-all">
+              Learn More
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Right image */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1603252109360-909b63fca868?auto=format&fit=crop&w=800&q=80"
+            alt="Thrift fashion"
+            className="w-full rounded-2xl shadow-xl"
+          />
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}
