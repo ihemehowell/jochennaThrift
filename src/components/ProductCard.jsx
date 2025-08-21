@@ -20,7 +20,7 @@ export default function ProductCard({ product }) {
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-base font-semibold line-clamp-2">{product.name}</h3>
         <p className="text-lg font-bold text-primary mt-1">₦{product.price}</p>
-        <div className=" z-50  flex space-x-2">
+        <div className=" z-40  flex space-x-2">
  
         <span
           key={product.tags}
