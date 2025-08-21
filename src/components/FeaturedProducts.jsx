@@ -1,99 +1,75 @@
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const products = [
-  {
-    id: 1,
-    name: "Nike Air Force 1",
-    price: "$85",
-    image: "https://via.placeholder.com/300x400.png?text=Nike+AF1",
-    category: "Sneakers",
-  },
-  {
-    id: 2,
-    name: "Vintage Denim Jacket",
-    price: "$45",
-    image: "https://via.placeholder.com/300x400.png?text=Denim+Jacket",
-    category: "Jackets",
-  },
-  {
-    id: 3,
-    name: "Adidas Hoodie",
-    price: "$60",
-    image: "https://via.placeholder.com/300x400.png?text=Adidas+Hoodie",
-    category: "Hoodies",
-  },
-  {
-    id: 4,
-    name: "Champion Sweatpants",
-    price: "$40",
-    image: "https://via.placeholder.com/300x400.png?text=Champion+Sweats",
-    category: "Pants",
-  },
-];
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { useCart } from "../context/CartContext";
 
 export default function FeaturedProducts() {
-  const scrollRef = useRef(null);
+  const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -300 : 300,
-        behavior: "smooth",
-      });
-    }
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const productsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(productsData.slice(0, 8)); // limit to 8 like thrifted
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-2xl md:text-3xl font-bold">Popular This Week</h2>
-          <p className="text-gray-500">Our most loved thrift picks right now</p>
-        </div>
-
-        {/* Arrows */}
-        <div className="flex space-x-2">
-          <button
-            onClick={() => scroll("left")}
-            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
-          >
-            <ChevronRight size={20} />
+    <section className="py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Section Header */}
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl font-bold relative">
+            Popular This Week
+            <span className="absolute -bottom-1 left-0 w-12 h-1 bg-primary rounded"></span>
+          </h2>
+          <button className="text-sm font-medium text-gray-600 hover:text-primary transition">
+            View All →
           </button>
         </div>
-      </div>
 
-      {/* Product Slider */}
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
-      >
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="min-w-[250px] flex-shrink-0 group cursor-pointer"
-          >
-            <div className="relative w-full h-72 overflow-hidden rounded-xl shadow hover:shadow-lg">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+        {/* Products Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="group relative bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+            >
+              {/* Product Image */}
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                />
+              </div>
+
+              {/* Hover Button */}
+              <button
+                onClick={() => addToCart(product)}
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 text-sm bg-black text-white rounded-full opacity-0 group-hover:opacity-100 transition"
+              >
+                Add to Cart
+              </button>
+
+              {/* Product Info */}
+              <div className="p-3">
+                <h3 className="text-sm font-medium line-clamp-1">
+                  {product.name}
+                </h3>
+                <p className="text-base font-semibold text-gray-900">
+                  ${product.price}
+                </p>
+              </div>
             </div>
-            <div className="mt-3">
-              <h3 className="text-sm text-gray-500">{product.category}</h3>
-              <p className="font-semibold">{product.name}</p>
-              <p className="text-primary font-bold">{product.price}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
