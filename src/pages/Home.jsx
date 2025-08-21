@@ -18,8 +18,7 @@ const Home = () => {
       <ProductShowcase />
       <PromoBanner />          
       <Testimonials />
-      <Newsletter />
-      <Footer />               
+      <Newsletter />              
     </div>
   )
 }
