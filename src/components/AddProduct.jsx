@@ -18,7 +18,7 @@ export default function AddProduct() {
   const [isAdmin, setIsAdmin] = useState(false);
 
     
-  const { name, price, category, description, stock, size, tags } = product;
+  const { name, price, subcategory, category, description, stock, size, tags } = product;
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
