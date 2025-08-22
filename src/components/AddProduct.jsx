@@ -125,8 +125,8 @@ export default function AddProduct() {
 
       <input
         type="text"
-        name="sub-category"
-        placeholder="Sub-Category"
+        name="category"
+        placeholder="Category"
         value={product.category}
         onChange={handleChange}
         className="border p-2 w-full mb-5 rounded"
@@ -134,7 +134,7 @@ export default function AddProduct() {
 
        <input
         type="text"
-        name="category"
+        name="subcategory"
         placeholder="Sub-category"
         value={product.subcategory}
         onChange={handleChange}
