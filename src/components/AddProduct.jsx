@@ -9,6 +9,7 @@ export default function AddProduct() {
     name: "",
     price: "",
     category: "",
+    subcategory:"",
     description: "",
     stock: "",
     size: "",
@@ -124,9 +125,18 @@ export default function AddProduct() {
 
       <input
         type="text"
-        name="category"
-        placeholder="Category"
+        name="sub-category"
+        placeholder="Sub-Category"
         value={product.category}
+        onChange={handleChange}
+        className="border p-2 w-full mb-5 rounded"
+      />
+
+       <input
+        type="text"
+        name="category"
+        placeholder="Sub-category"
+        value={product.subcategory}
         onChange={handleChange}
         className="border p-2 w-full mb-5 rounded"
       />
