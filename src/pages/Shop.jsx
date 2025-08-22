@@ -23,6 +23,7 @@ function Shop({}) {
 
   const filters = {
     category: [...new Set(products.map((p) => p.category))],
+     category: [...new Set(products.map((p) => p.subcategory))],
     gender: [...new Set(products.map((p) => p.gender))],
     ageGroup: [...new Set(products.map((p) => p.ageGroup))],
   };
@@ -53,6 +54,11 @@ function Shop({}) {
     if (selectedFilters.category.length > 0) {
       filtered = filtered.filter((p) =>
         selectedFilters.category.includes(p.category)
+      );
+    }
+    if (selectedFilters.subcategory.length > 0) {
+      filtered = filtered.filter((p) =>
+        selectedFilters.subcategory.includes(p.subcategory)
       );
     }
     if (selectedFilters.gender.length > 0) {
