@@ -23,7 +23,7 @@ function Shop({}) {
 
   const filters = {
     category: [...new Set(products.map((p) => p.category))],
-     category: [...new Set(products.map((p) => p.subcategory))],
+     subcategory: [...new Set(products.map((p) => p.subcategory))],
     gender: [...new Set(products.map((p) => p.gender))],
     ageGroup: [...new Set(products.map((p) => p.ageGroup))],
   };
